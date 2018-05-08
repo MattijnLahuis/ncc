@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, StyleSheet, Text, View, ImageBackground, Line } from 'react-native';
+import { Animated, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import _ from 'lodash';
 
 import { AnimatedNumber } from '../../components';
@@ -54,8 +54,6 @@ export default class Clock extends React.Component {
     const hourObj = digits.find(d => {
       return d.digit === hour;
     });
-
-    return <Line x1={15} y1={0} x2={15} y2={200} stroke="black" strokeWidth={1}/>
 
   }
 
