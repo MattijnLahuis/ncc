@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Animated, Text } from 'react-native';
 
 export default class AnimatedNumber extends React.Component {
   state = {
@@ -8,12 +8,13 @@ export default class AnimatedNumber extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.leftStart !== this.props.leftStart ||
-      prevProps.leftEnd !== this.props.leftEnd ||
-      prevProps.topStart !== this.props.topStart ||
-      prevProps.topEnd !== this.props.topEnd) {
-      this.animate();
-    }
+    if(this.props.update) this.animate();
+    // if(prevProps.leftStart !== this.props.leftStart ||
+    //   prevProps.leftEnd !== this.props.leftEnd ||
+    //   prevProps.topStart !== this.props.topStart ||
+    //   prevProps.topEnd !== this.props.topEnd) {
+    //   this.animate();
+    // }
   }
 
   componentDidMount() {

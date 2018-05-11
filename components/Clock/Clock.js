@@ -1,8 +1,9 @@
-import React from 'react';
+  import React from 'react';
 import { Animated, StyleSheet, Text, View, ImageBackground } from 'react-native';
+
 import _ from 'lodash';
 
-import { AnimatedNumber } from '../../components';
+import { AnimatedNumber, ClockHand } from '../../components';
 
 const digits = [
   { digit: 1, leftStart: 0, leftEnd: 60, topStart: 0, topEnd: -100 },
@@ -40,32 +41,41 @@ export default class Clock extends React.Component {
     })
   }
 
-  renderHours = () => {
+  renderHours = (shouldUpdate) => {
+    if(shouldUpdate) this.shuffleDigits();
+
     return digits.map((d, index) => {
         return (
-          <AnimatedNumber key={index} {...d} />
+          <AnimatedNumber key={index} {...d} update={shouldUpdate} />
         )
       })
   }
 
-  renderHands = () => {
+  renderHands = (shouldUpdate) => {
     const hour = this.props.time.getHours() % 12;
 
     const hourObj = digits.find(d => {
       return d.digit === hour;
     });
 
+    return (
+      <ClockHand
+        x1={ (hourObj.leftEnd * 0.7) + 120 }
+        y1={ (hourObj.topEnd * 0.7) + 120 }
+        update={ shouldUpdate }
+      />
+    )
   }
 
   render() {
     x++;
-    if(this.props.prevTime.getHours() != this.props.time.getHours() || x % 10 === 0) {
-      this.shuffleDigits();
-    }
+
+    const shouldUpdate = this.props.prevTime.getHours() != this.props.time.getHours() || x % 10 === 0;
+
     return (
         <View>
-          { this.renderHours() }
-          { this.renderHands() }
+          { this.renderHours(shouldUpdate) }
+          { this.renderHands(shouldUpdate) }
         </View>
     );
   }
