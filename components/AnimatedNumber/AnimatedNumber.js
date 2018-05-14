@@ -9,12 +9,6 @@ export default class AnimatedNumber extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.update) this.animate();
-    // if(prevProps.leftStart !== this.props.leftStart ||
-    //   prevProps.leftEnd !== this.props.leftEnd ||
-    //   prevProps.topStart !== this.props.topStart ||
-    //   prevProps.topEnd !== this.props.topEnd) {
-    //   this.animate();
-    // }
   }
 
   componentDidMount() {
@@ -74,14 +68,13 @@ export default class AnimatedNumber extends React.Component {
   render() {
     return (
       <Animated.View style={{
-        backgroundColor: 'red',
         position: 'absolute',
         width: 20,
         height: 20,
         left: this.state.left,
         top: this.state.top,
       }}>
-        <Text style={{textAlign: 'center'}}>{ this.props.digit }</Text>
+        <Text style={{textAlign: 'center', fontSize: 18}}>{ this.props.digit }</Text>
       </Animated.View>
     );
   }

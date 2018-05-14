@@ -27,7 +27,7 @@ export default class ClockHand extends React.Component {
     Animated.timing(
       this.state.fadeAnim,
       {
-        toValue: 1, duration: 5000, delay: 2000
+        toValue: 1, duration: 5000, delay: 1500
       },
     ).start();
   }
@@ -37,7 +37,13 @@ export default class ClockHand extends React.Component {
 
     return (
       <Animated.View>
-        <AnimatedSvg style={{position: 'absolute', opacity: this.state.fadeAnim, left: -120, top: -120}} height={240} width={240}>
+        <AnimatedSvg style={{
+          position: 'absolute',
+          opacity: this.state.fadeAnim,
+          transform: [{rotate: this.props.degrees+'deg'}],
+          left: -120,
+          top: -120
+        }} height={240} width={240}>
           <Svg.Line
             x1={ this.props.x1 }
             y1={ this.props.y1 }
