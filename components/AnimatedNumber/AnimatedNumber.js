@@ -73,8 +73,13 @@ export default class AnimatedNumber extends React.Component {
         height: 20,
         left: this.state.left,
         top: this.state.top,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
-        <Text style={{textAlign: 'center', fontSize: 18}}>{ this.props.digit }</Text>
+        <Text style={{
+          fontSize: this.props.isHour ? 18 : 10,
+        }}>{ this.props.digit }</Text>
       </Animated.View>
     );
   }

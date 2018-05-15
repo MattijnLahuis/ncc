@@ -45,10 +45,10 @@ export default class ClockHand extends React.Component {
           top: -120
         }} height={240} width={240}>
           <Svg.Line
-            x1={ this.props.x1 }
-            y1={ this.props.y1 }
-            x2="120"
-            y2="120"
+            x1="130"
+            y1="120"
+            x2={ this.props.x }
+            y2={ this.props.y }
             stroke="red"
             strokeWidth="2"
           />

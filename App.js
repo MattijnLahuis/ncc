@@ -5,14 +5,12 @@ import { Clock } from './components';
 
 export default class App extends React.Component {
   state = {
-    prevTime: new Date(),
     time: new Date(),
   }
 
   componentDidMount() {
     setInterval( () => {
       this.setState({
-        prevTime: this.state.time,
         time: new Date(),
       })
     },1000)
@@ -26,7 +24,7 @@ export default class App extends React.Component {
           resizeMode='cover'
           style={styles.background}
         >
-          <Clock time={this.state.time} prevTime={this.state.prevTime} />
+          <Clock time={this.state.time} />
         </ImageBackground>
       </View>
     );
