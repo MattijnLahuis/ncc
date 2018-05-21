@@ -35,6 +35,10 @@ export default class ClockHand extends React.Component {
   render() {
     const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
+    console.log(this.props.x);
+    console.log(this.props.y);
+    console.log("....");
+
     return (
       <Animated.View>
         <AnimatedSvg style={{
@@ -45,12 +49,12 @@ export default class ClockHand extends React.Component {
           top: -120
         }} height={240} width={240}>
           <Svg.Line
-            x1="130"
-            y1="120"
+            x1={this.props.x <= 130 ? 135 : 125 }
+            y1={ this.props.y <= 120 ? 125 : 115 }
             x2={ this.props.x }
             y2={ this.props.y }
             stroke="red"
-            strokeWidth="2"
+            strokeWidth={ this.props.isHour ? 3 : 2 }
           />
         </AnimatedSvg>
       </Animated.View>

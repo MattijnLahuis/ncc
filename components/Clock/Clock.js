@@ -1,4 +1,4 @@
-   import React from 'react';
+import React from 'react';
 import { Animated, StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 import _ from 'lodash';
@@ -78,13 +78,14 @@ export default class Clock extends React.Component {
     const nextPosLeftEnd = nextPosObj.leftEnd;
     const nextPosTopEnd = nextPosObj.topEnd;
 
-    nextPosObj.leftEnd = hours[nextHourIndex].leftEnd;
-    nextPosObj.topEnd = hours[nextHourIndex].topEnd;
-    nextPosObj.position = hours[nextHourIndex].position;
 
-    hours[nextHourIndex].leftEnd = nextPosLeftEnd;
-    hours[nextHourIndex].topEnd = nextPosTopEnd;
-    hours[nextHourIndex].position = nextPos;
+    nextPosObj.leftEnd = hours[nextHourIndex % 12].leftEnd;
+    nextPosObj.topEnd = hours[nextHourIndex % 12].topEnd;
+    nextPosObj.position = hours[nextHourIndex % 12].position;
+
+    hours[nextHourIndex % 12].leftEnd = nextPosLeftEnd;
+    hours[nextHourIndex % 12].topEnd = nextPosTopEnd;
+    hours[nextHourIndex % 12].position = nextPos;
   }
 
   shuffleMinutes = () => {
@@ -151,7 +152,10 @@ export default class Clock extends React.Component {
     });
     const hourOffset = Math.floor(this.props.time.getMinutes() / 60 * 30);
 
-    const minObj = minutes[parseInt(this.props.time.getMinutes() / 5) - 1];
+    const min = this.props.time.getMinutes();
+    const minIndex = min < 5 ? 11 : parseInt(min/ 5) - 1;
+
+    const minObj = minutes[minIndex];
     const minOffset = Math.floor(6 * (this.props.time.getMinutes() % 5));
 
     return (
@@ -174,7 +178,7 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    const shouldUpdate = this.props.time.getSeconds() === 0;
+    const shouldUpdate = this.props.time.getSeconds() % 10 === 0;
 
     return (
         <View>
