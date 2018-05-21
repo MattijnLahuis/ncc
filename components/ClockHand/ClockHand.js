@@ -35,10 +35,6 @@ export default class ClockHand extends React.Component {
   render() {
     const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
-    console.log(this.props.x);
-    console.log(this.props.y);
-    console.log("....");
-
     return (
       <Animated.View>
         <AnimatedSvg style={{
