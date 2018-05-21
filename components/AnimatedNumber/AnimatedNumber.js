@@ -66,9 +66,9 @@ export default class AnimatedNumber extends React.Component {
   }
 
   render() {
-    const rgb1 = Math.floor(Math.random() * 256);
-    const rgb2 = Math.floor(Math.random() * 256);
-    const rgb3 = Math.floor(Math.random() * 256);
+    // const rgb1 = Math.floor(Math.random() * 256);
+    // const rgb2 = Math.floor(Math.random() * 256);
+    // const rgb3 = Math.floor(Math.random() * 256);
 
     return (
       <Animated.View style={{
@@ -84,7 +84,7 @@ export default class AnimatedNumber extends React.Component {
         <Text style={{
           fontSize: this.props.isHour ? 18 : 10,
           fontWeight: this.props.isHour ? 'normal' : 'bold',
-          color: 'rgb(' + rgb1 + ',' + rgb2 + ', ' +  rgb3 + ')',
+          // color: 'rgb(' + rgb1 + ',' + rgb2 + ', ' +  rgb3 + ')',
         }}>{ this.props.digit }</Text>
       </Animated.View>
     );
