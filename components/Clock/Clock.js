@@ -178,7 +178,7 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    const shouldUpdate = this.props.time.getSeconds() % 10 === 0;
+    const shouldUpdate = this.props.time.getSeconds() === 0;
 
     return (
         <View>

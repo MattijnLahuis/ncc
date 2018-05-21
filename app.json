@@ -1,27 +1,21 @@
 {
   "expo": {
-    "name": "ncc-blank",
-    "description": "This project is really great.",
-    "slug": "ncc-blank",
+    "name": "ncc",
+    "description": "Why would anyone make a silly clock like this?",
+    "slug": "ncc",
     "privacy": "public",
     "sdkVersion": "27.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": ["android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/doge.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/doge.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "com.mattijnolgabv.ncc",
     }
   }
 }
